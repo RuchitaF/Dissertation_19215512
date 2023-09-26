@@ -10,6 +10,8 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
+- [Dataset](#dataset)
+- [Code](#code)
 
 
 ## Introduction
@@ -77,3 +79,8 @@ python manage.py runserver
 /api/products/<int:pk>/: Product details by ID.
 /api/recommendations/: Product recommendations based on user queries.
 
+## Dataset
+
+
+## Code
+views.py
