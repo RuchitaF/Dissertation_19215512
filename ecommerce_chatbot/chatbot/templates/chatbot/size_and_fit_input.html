@@ -1,0 +1,8 @@
+<!-- Input fields for measurements and preferences -->
+<form method="post">
+    {% csrf_token %}
+    <label for="chest">Chest Measurement:</label>
+    <input type="number" name="chest" step="0.01" required>
+    <!-- Add input fields for waist, hips, shoe_size, tops_fit -->
+    <button type="submit">Get Size Recommendations</button>
+</form>

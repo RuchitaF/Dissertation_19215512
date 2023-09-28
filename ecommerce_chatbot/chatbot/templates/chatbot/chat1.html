@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversational E-commerce Chatbot</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Welcome to E-commerce Chatbot</h1>
+        </div>
+        <div class="chat-history">
+            {% for message in chat_history %}
+                {% if message.sender == 'user' %}
+                    <div class="user-message"><p>You: {{ message.message }}</p></div>
+                {% else %}
+                    <div class="bot-message"><p>Bot: {{ message.message }}</p></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- Add the input form for user messages here -->
+        <form method="post" action="{% url 'chatbot:chat' %}">
+            {% csrf_token %}
+            <input type="text" name="message" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
+        <a href="{% url 'chatbot:logout' %}" class="logout-link">Logout</a>
+    </div>
+</body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('https://th.bing.com/th/id/OIP.GDzSl5MsIWQlwFGsYW62ngHaE8?pid=ImgDet&rs=1');
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+    }
+    
+    .chat-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .chat-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .chat-history {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .user-message p {
+        background-color: #f0f0f0;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin: 5px 0;
+        word-wrap: break-word;
+        max-width: 70%;
+    }
+    
+    .bot-message p {
+        background-color: #e6f7ff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin: 5px 0;
+        word-wrap: break-word;
+        max-width: 70%;
+    }
+    
+    input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    .logout-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        text-decoration: none;
+        color: #007bff;
+    }
+</style>
+</html>

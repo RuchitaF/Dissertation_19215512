@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Recommendations Chatbot</title>
+    <style>
+        .has-bg-img {
+            background-image: url('https://t3.ftcdn.net/jpg/05/00/61/56/360_F_500615697_GlLIeDjkntdAw3BG1SeUEqA17405ft1N.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            position: relative;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            
+        }
+
+        .chat-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.4);
+            z-index: -1; /* Place the overlay behind other content */
+        }
+
+        h1 {
+            font-size: 24px;
+            color: black; 
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: black; 
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: black;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+            color: black; 
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            color:black; 
+        }
+
+        
+    </style>
+{% comment %} </head>
+<body>
+    <div class="has-bg-img">
+        <div class="chat-container">
+          
+        
+            <h1>Product Recommendations Chatbot</h1>
+            <form method="post">
+                {% csrf_token %}
+                <label for="user_query">Enter product name:</label>
+                <input type="text" id="user_query" name="user_query">
+                <button type="submit">Get Recommendations</button>
+            </form>
+            
+            <h2>Top 3 Recommended Products:</h2>
+            <ul>
+                <b>
+                {% if recommended_products %}
+                    {% for product, description_lines in recommended_products %}
+                        <li>
+                            <h3>{{ product }}</h3>
+                            <p>{{ description_lines.0 }}</p>
+                            <p>{{ description_lines.1 }}</p>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>No recommendations available.</li>
+                {% endif %}
+                    </b>
+            </ul>
+            
+            <a href="{% url 'chatbot:chat' %}" style="color: blue; font-size: 18px;">Back to Chat</a>
+        </div>
+    </div>
+    </body>
+    </html> {% endcomment %}
+
+  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+</head>
+    <body>
+        <div class="has-bg-img">
+            <div class="chat-container">
+                <h1>Welcome to Product Recommendations Chatbot</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="user_query">Enter a product name:</label>
+                    <input type="text" id="user_query" name="user_query" placeholder="E.g.,  Jacket or skirt, etc.">
+                    <button type="submit" >Get Recommendations</button>
+                </form>
+                
+                <h2>Top 3 Recommended Products:</h2>
+                <ul>
+                    {% if recommended_products %}
+                        {% for product, description_lines in recommended_products %}
+                            <li>
+                                <h3>{{ product }}</h3>
+                                <p>{{ description_lines.0 }}</p>
+                                <p>{{ description_lines.1 }}</p>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No recommendations available.</li>
+                    {% endif %}
+                </ul>
+                
+                <a href="{% url 'chatbot:chat' %}" class="back-to-chat-link">Back to Chat</a>
+            </div>
+        </div>
+    </body>
+    </html>
+    
+</body>
+</html>

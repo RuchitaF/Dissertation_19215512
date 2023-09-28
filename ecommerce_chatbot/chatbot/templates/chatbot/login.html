@@ -1,0 +1,86 @@
+
+<html>
+{% block content %}
+<div class="has-bg-img" >
+    <div class="login-container" >
+    <h2>Login</h2>
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="login-button">Login</button>
+    </form>
+</div>
+</div>
+
+{% endblock %}
+
+
+<style>
+    .has-bg-img {
+        background-image: url('https://static.startuptalky.com/2021/06/Ways-to-Market-Your-E-Commerce-Website-StartupTalky.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        position: relative;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-attachment: fixed;
+    }
+   
+    .login-container {
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 400px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Align to the right */
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        color: black;
+        font-family: Arial, sans-serif;
+        {% comment %} background-color: rgba(255, 255, 255, 0.2); /* Add transparency */
+        border-radius: 10px; /* Optional: Add rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */ {% endcomment %}
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+    }
+    
+    
+    {% comment %} .login-form {
+        background-color: rgba(255, 255, 255, 0.9);
+        
+        padding: 20px;
+        max-width: 400px;
+        width: 100%;
+       
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-position: center;
+    } {% endcomment %}
+    
+    .login-form h2 {
+        margin-bottom: 20px;
+    }
+    
+    .login-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        
+
+    }
+    
+    .login-button:hover {
+        background-color: #0056b3;
+    }   
+</style>
+</html>

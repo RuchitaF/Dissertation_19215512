@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+</head>
+<body>
+    <header>
+        <h1>Frequently Asked Questions</h1>
+    </header>
+    <main>
+        {% for question, answer in faqs_data.items %}
+        <section class="faq-section">
+            <h2>{{ question }}</h2>
+            <p>{{ answer }}</p>
+        </section>
+        {% endfor %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Your Company Name</p>
+    </footer>
+</body>
+</html>

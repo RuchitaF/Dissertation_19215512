@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kids Size Input</title>
+</head>
+<body>
+    <h1>Size and Fit Recommendations for Kids' Clothing</h1>
+    <form method="post" action="{% url 'chatbot:kids_size_input' %}">
+        {% csrf_token %}
+        <label for="age">Age:</label>
+        <input type="number" name="age" required>
+        <br>
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br>
+        <label for="preferred_fit">Preferred Fit:</label>
+        <input type="text" name="preferred_fit" required>
+        <br>
+        <button type="submit">Get Size Recommendations</button>
+    </form>
+</body>
+</html>

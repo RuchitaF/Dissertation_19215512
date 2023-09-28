@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Arrivals</title>
+</head>
+<body>
+    <h1>New Arrivals</h1>
+    <h2>Women's Fashion</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <h3>{{ product.name }}</h3>
+                <p>Description: {{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>New Arrivals</title>
+</head>
+<body>
+    <h1>New Arrivals</h1>
+    {% if products %}
+    <ul>
+        {% for product in products %}
+        <li><a href="{% url 'chatbot:product_details' product.id %}">{{ product.name }}</a> - ${{ product.price }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html> {% endcomment %}

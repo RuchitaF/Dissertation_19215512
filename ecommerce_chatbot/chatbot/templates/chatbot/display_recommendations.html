@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Recommendations</title>
+</head>
+<h2>Top 3 Recommended Products:</h2>
+<ul>
+    {% if recommended_products %}
+        {% for product, description_lines in recommended_products %}
+            <li>
+                <h3>{{ product }}</h3>
+                <p>{{ description_lines.0 }}</p>
+                <p>{{ description_lines.1 }}</p>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li>No recommendations available.</li>
+    {% endif %}
+</ul>
+</html>

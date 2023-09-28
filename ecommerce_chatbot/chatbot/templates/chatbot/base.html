@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your eCommerce Chatbot</title>
+    <!-- Add your CSS and JavaScript includes here -->
+    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'chatbot:chat' %}">ChatBot</a></li>
+                {% comment %} <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'cart' %}">Cart</a></li> {% endcomment %}
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+        <div class="user-info">
+            {% if user.is_authenticated %}
+                <p>Welcome, {{ user.username }}!</p>
+                <a href="{% url 'chatbot:logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'chatbot:login' %}">Login</a>
+                
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{% comment %} 
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kids' Size Recommendation Result</title>
+</head>
+<body>
+    <div class="has-bg-img bg-purple bg-blend-screen">
+        <img class="bg-img" src="https://www.elasticpath.com/sites/default/files/2020-05/GettyImages-1154478335.jpg">
+    <h1>Kids' Size Recommendation</h1>
+    <h2>Size Recommendations:</h2>
+    <ul>
+        {% for item, size in size_recommendations.items %}
+            <li>{{ item }}: {{ size }}</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+<style>
+    .btn-link{
+        padding-left: 35em;
+        padding-top: 2em;
+         margin-bottom: 1em; 
+        }
+   
+    .bg-img{
+        min-height: 100%;
+        min-width: 1024px;
+          
+        /* Set up proportionate scaling */
+        width: 100%;
+        height: auto;
+          
+        /* Set up positioning */
+        top: 0;
+        left: 0;
+        z-index: -1;
+        position: absolute;
+        
+    }
+</style>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kids' Size Recommendation Result</title>
+    <style>
+        {% comment %} /* Styles for the background image */ {% endcomment %}
+        .has-bg-img {
+            background-image: url('https://t3.ftcdn.net/jpg/05/00/61/56/360_F_500615697_GlLIeDjkntdAw3BG1SeUEqA17405ft1N.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; 
+            position: relative;
+            color: black; 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+        }
+        .chat-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        {% comment %} /* Styles for the content */ {% endcomment %}
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+            font-size: 18px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: blue; 
+            font-size: 18px;
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="has-bg-img">
+        <div class="chat-container">
+        <h1>Kids' Size Recommendation</h1>
+        <h2>Size Recommendations:</h2>
+        <ul>
+            {% for item, size in size_recommendations.items %}
+                <li>{{ item }}: {{ size }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'chatbot:chat' %}">Back to Chat</a>
+    </div>
+    </div>
+</body>
+</html>

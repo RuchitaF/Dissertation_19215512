@@ -1,0 +1,187 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Chatbot</title>
+</head>
+<body>
+    <div class="has-bg-img bg-purple bg-blend-screen">
+        <img class="bg-img" src="https://www.elasticpath.com/sites/default/files/2020-05/GettyImages-1154478335.jpg">
+
+        
+    <h1>Customer Service Chatbot</h1>
+<b>
+    <div>
+        {% if response_message %}
+        <p>{{ response_message }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="user_action">Select an option:</label>
+            <select name="user_action" id="user_action">
+                <option value="product_details">Product Details</option>
+                <option value="order_product">Order Product</option>
+                <option value="return_refund">Return / Refund</option>
+                <option value="select_options">Select Products</option>
+
+            </select>
+            <input type="text" name="user_query" placeholder="Enter product name or keyword">
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if matching_products %}
+        <h2>Matching Products:</h2>
+        <ul>
+            {% for product in matching_products %}
+            <li>{{ product.0 }} - {{ product.1 }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div></b>
+<a href="{% url 'chatbot:chat' %}">Back to Chat</a>
+</body>
+<style>
+    .btn-link{
+        padding-left: 35em;
+        padding-top: 2em;
+         margin-bottom: 1em; 
+        }
+   
+    .bg-img{
+        min-height: 100%;
+        min-width: 1024px;
+          
+        /* Set up proportionate scaling */
+        width: 100%;
+        height: auto;
+          
+        /* Set up positioning */
+        top: 0;
+        left: 0;
+        z-index: -1;
+        position: absolute;
+        
+        
+    }
+</style>
+</html>  
+ 
+
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Chatbot</title>
+    <style>
+        {% comment %} /* Styles for the background image */ {% endcomment %}
+        .has-bg-img {
+            background-image: url('https://t3.ftcdn.net/jpg/05/00/61/56/360_F_500615697_GlLIeDjkntdAw3BG1SeUEqA17405ft1N.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; 
+            position: relative;
+            color: black; 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+        }
+        .chat-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        {% comment %} /* Styles for the form and content */ {% endcomment %}
+        h1 {
+            font-size: 24px;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        select, input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: black;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="has-bg-img">
+        <div class="chat-container">
+        <h1>Customer Service Chatbot</h1>
+
+        {% if response_message %}
+        <p>{{ response_message }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="user_action">Select an option:</label>
+            <select name="user_action" id="user_action">
+                <option value="product_details">Product Details</option>
+                <option value="order_product">Order Product</option>
+                <option value="return_refund">Return / Refund</option>
+                <option value="select_options">Select Products</option>
+            </select>
+            <input type="text" name="user_query" placeholder="Enter product name or keyword">
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if matching_products %}
+        <h2>Matching Products:</h2>
+        <ul>
+            {% for product in matching_products %}
+            <li>{{ product.0 }} - {{ product.1 }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <a href="{% url 'chatbot:chat' %}" style="color: blue; font-size: 18px;">Back to Chat</a>
+    </div>
+</div>
+</body>
+</html>

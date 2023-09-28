@@ -1,0 +1,176 @@
+ {% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Kids' Size Recommendation</title>
+</head>
+<body>
+    <div class="has-bg-img bg-purple bg-blend-screen">
+        <img class="bg-img" src="https://www.elasticpath.com/sites/default/files/2020-05/GettyImages-1154478335.jpg">
+    <h1>Kids' Size Recommendation</h1>
+    <form method="post" action="{% url 'chatbot:kids_size_recommendation' %}">
+        {% csrf_token %}
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+        
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="boy">Boy</option>
+            <option value="girl">Girl</option>
+        </select><br>
+        
+        <label for="preferred_fit">Preferred Fit:</label>
+        <select name="preferred_fit" required>
+            <option value="loose">Loose</option>
+            <option value="regular">Regular</option>
+            <option value="slim">Slim</option>
+        </select><br>
+        
+        <button type="submit">Get Size Recommendations</button>
+    </form>
+    <a href="{% url 'chatbot:chat' %}">Back to Chat</a>
+</body>
+<style>
+    .btn-link{
+        padding-left: 35em;
+        padding-top: 2em;
+         margin-bottom: 1em; 
+        }
+   
+    .bg-img{
+        min-height: 100%;
+        min-width: 1024px;
+          
+        /* Set up proportionate scaling */
+        width: 100%;
+        height: auto;
+          
+        /* Set up positioning */
+        top: 0;
+        left: 0;
+        z-index: -1;
+        position: absolute;
+        
+        
+    }
+</style>
+</html> 
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Kids Size Recommendations</title>
+</head>
+<body>
+    <h1>Size Recommendations for Kids' Clothing</h1>
+    <ul>
+        {% for category, size in recommendations.items %}
+            <li>{{ category }}: {{ size }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kids' Size Recommendation</title>
+    <style>
+        /* Styles for the background image */
+        .has-bg-img {
+            background-image: url('https://t3.ftcdn.net/jpg/05/00/61/56/360_F_500615697_GlLIeDjkntdAw3BG1SeUEqA17405ft1N.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; 
+            position: relative;
+            color: black; 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+        }
+        .chat-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 24px;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        select, input[type="number"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: blue; 
+            font-size: 18px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="has-bg-img">
+        <div class="chat-container">
+        <h1>Kids' Size Recommendation</h1>
+
+        <form method="post" action="{% url 'chatbot:kids_size_recommendation' %}">
+            {% csrf_token %}
+            <label for="age">Age:</label>
+            <input type="number" name="age" required><br>
+            
+            <label for="gender">Gender:</label>
+            <select name="gender" required>
+                <option value="boy">Boy</option>
+                <option value="girl">Girl</option>
+            </select><br>
+            
+            <label for="preferred_fit">Preferred Fit:</label>
+            <select name="preferred_fit" required>
+                <option value="loose">Loose</option>
+                <option value="regular">Regular</option>
+                <option value="slim">Slim</option>
+            </select><br>
+            
+            <button type="submit">Get Size Recommendations</button>
+        </form>
+
+        <a href="{% url 'chatbot:chat' %}">Back to Chat</a>
+    </div>
+    </div>
+</body>
+</html>
+
