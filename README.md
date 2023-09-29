@@ -80,7 +80,7 @@ python manage.py runserver
 /api/recommendations/: Product recommendations based on user queries.
 
 ## Dataset
-
+https://www.kaggle.com/datasets/cclark/product-item-data
 
 ## Code
 views.py
