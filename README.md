@@ -84,7 +84,7 @@ python manage.py runserver
 https://www.kaggle.com/datasets/cclark/product-item-data
 
 ## Code
-views.py
+Check views.py
 ## Requirements.txt
 [Uploadiabsl-py==1.4.0
 aio-pika==6.8.2
